@@ -1,0 +1,51 @@
+# Translations template for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-10-16 21:08+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: src/routers/start_flow.py:24
+msgid ""
+"Hello, i'm FLOculus-Bot!\n"
+"I can help you find freelance tasks on various freelance platforms."
+msgstr ""
+
+#: src/routers/start_flow.py:25
+msgid ""
+"Please, provide your geolocation so i can display the time in your "
+"timezone."
+msgstr ""
+
+#: src/routers/start_flow.py:28
+msgid "Hello again!"
+msgstr ""
+
+#: src/routers/start_flow.py:41
+msgid "Thanks, time will be displayed in your timezone ({timezone})"
+msgstr ""
+
+#: src/routers/start_flow.py:48
+msgid "Ok, time will be displayed in UTC timezone."
+msgstr ""
+
+#: src/utils/markups.py:7
+msgid "Provide geolocation"
+msgstr ""
+
+#: src/utils/markups.py:8
+msgid "Skip"
+msgstr ""
+

@@ -1,0 +1,57 @@
+# Russian translations for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-10-16 21:08+0500\n"
+"PO-Revision-Date: 2024-10-16 19:54+0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ru\n"
+"Language-Team: ru <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: src/routers/start_flow.py:24
+msgid ""
+"Hello, i'm FLOculus-Bot!\n"
+"I can help you find freelance tasks on various freelance platforms."
+msgstr ""
+"Привет, я FLOculus бот\n"
+"Я могу помочь вам найти заказы на различных фриланс-площадках."
+
+#: src/routers/start_flow.py:25
+msgid ""
+"Please, provide your geolocation so i can display the time in your "
+"timezone."
+msgstr ""
+"Пожалуйста, предоставьте свою геолокацию, чтобы я мог отображать время в "
+"вашем часовом поясе."
+
+#: src/routers/start_flow.py:28
+msgid "Hello again!"
+msgstr "Ещё раз привет!"
+
+#: src/routers/start_flow.py:41
+msgid "Thanks, time will be displayed in your timezone ({timezone})"
+msgstr "Спасибо, время будет отображаться в вашем часовом поясе ({timezone})"
+
+#: src/routers/start_flow.py:48
+msgid "Ok, time will be displayed in UTC timezone."
+msgstr "Хорошо, время будет отображаться в стандартном часовом поясе UTC"
+
+#: src/utils/markups.py:7
+msgid "Provide geolocation"
+msgstr "Предоставить геолокацию"
+
+#: src/utils/markups.py:8
+msgid "Skip"
+msgstr "Пропустить"
+
