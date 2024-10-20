@@ -22,6 +22,7 @@ async def main():
     SimpleI18nMiddleware(i18n).setup(router=dp)
 
     dp.include_router(routers.StartFlowRouter)
+    dp.include_router(routers.FiltersFlowRouter)
 
     logging.warning("Starting polling")
     await dp.start_polling(bot)

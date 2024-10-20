@@ -1,4 +1,6 @@
-from re import Pattern
+from re import Pattern, compile
+
+from aiogram.utils.i18n import gettext as _
 
 from .base import TaskFilter
 from ..tasks import Task
@@ -7,9 +9,9 @@ from ..tasks import Task
 class RegexTaskFilter(TaskFilter):
     regexp: Pattern[str]
 
-    def __init__(self, regexp: Pattern, is_negative: bool=False):
+    def __init__(self, regexp: Pattern | str, is_negative: bool=False):
         super().__init__(is_negative)
-        self.regexp = regexp
+        self.regexp = compile(regexp) if isinstance(regexp, str) else regexp
 
     def _filter(self, task: Task) -> bool:
         return any((
@@ -17,3 +19,6 @@ class RegexTaskFilter(TaskFilter):
             self.regexp.search(task.description or "") is not None,
             any(map(lambda tag: self.regexp.search(tag) is not None, task.tags))
         ))
+
+    def _translated_str(self) -> str:
+        return _("Regex filter: «{regex}»").format(regex=self.regexp.pattern)

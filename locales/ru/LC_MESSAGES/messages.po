@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-16 21:08+0500\n"
-"PO-Revision-Date: 2024-10-16 19:54+0500\n"
+"POT-Creation-Date: 2024-10-19 23:46+0500\n"
+"PO-Revision-Date: 2024-10-19 23:45+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
 "Language-Team: ru <LL@li.org>\n"
@@ -19,21 +19,150 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.16.0\n"
 
+#: src/classes/filters/keyword.py:35
+msgid "Keyword filter: «{keyword}»"
+msgstr "Текстовый фильтр: «{keyword}»"
+
+#: src/classes/filters/lifetime.py:43
+msgid "Up to {max_lifetime}"
+msgstr "До {max_lifetime}"
+
+#: src/classes/filters/lifetime.py:45
+msgid "At least {min_lifetime}"
+msgstr "От {min_lifetime}"
+
+#: src/classes/filters/lifetime.py:49
+msgid "From {min_lifetime} to {max_lifetime}"
+msgstr "От {min_lifetime} до {max_lifetime}"
+
+#: src/classes/filters/lifetime.py:51
+msgid "Lifetime filter: {lifetime}"
+msgstr "Фильтр по времени существования: {lifetime}"
+
+#: src/classes/filters/lifetime.py:59
+msgid "{days} day"
+msgid_plural "{days} days"
+msgstr[0] "{days} дня"
+msgstr[1] "{days} дней"
+msgstr[2] "{days} дней"
+
+#: src/classes/filters/lifetime.py:61
+msgid "{hours} hour"
+msgid_plural "{hours} hours"
+msgstr[0] "{hours} часа"
+msgstr[1] "{hours} часов"
+msgstr[2] "{hours} часов"
+
+#: src/classes/filters/lifetime.py:63
+msgid "{minutes} minute"
+msgid_plural "{minutes} minutes"
+msgstr[0] "{minutes} минуты"
+msgstr[1] "{minutes} минут"
+msgstr[2] "{minutes} минут"
+
+#: src/classes/filters/price.py:10
+msgid "Undefined price"
+msgstr "Оплата не указана"
+
+#: src/classes/filters/price.py:11
+msgid "Price per hour"
+msgstr "Оплата за час"
+
+#: src/classes/filters/price.py:12
+msgid "Price per project"
+msgstr "Оплата за проект"
+
+#: src/classes/filters/price.py:49
+msgid "Up to {max_price}₽"
+msgstr "До {max_price}₽"
+
+#: src/classes/filters/price.py:51
+msgid "At least {min_price}₽"
+msgstr "От {min_price}₽"
+
+#: src/classes/filters/price.py:53
+msgid "From {min_price}₽ to {max_price}₽"
+msgstr "От {min_price}₽ до {max_price}₽"
+
+#: src/classes/filters/price.py:55
+msgid "Price filter ({price_type}): {price}"
+msgstr "Фильтр по оплате ({price_type}): {price}"
+
+#: src/classes/filters/regex.py:24
+msgid "Regex filter: «{regex}»"
+msgstr "Фильтр регулярного выражения: «{regex}»"
+
+#: src/classes/filters/responses.py:41
+msgid "Up to {max_responses} response"
+msgid_plural "Up to {max_responses} responses"
+msgstr[0] "До {max_responses} отклика"
+msgstr[1] "До {max_responses} откликов"
+msgstr[2] "До {max_responses} откликов"
+
+#: src/classes/filters/responses.py:43
+msgid "At least {min_responses} response"
+msgid_plural "At least {min_responses} responses"
+msgstr[0] "От {min_responses} отклика"
+msgstr[1] "От {min_responses} откликов"
+msgstr[2] "От {min_responses} откликов"
+
+#: src/classes/filters/responses.py:45
+msgid "From {min_responses} to {max_responses} response"
+msgid_plural "From {min_responses} to {max_responses} responses"
+msgstr[0] "От {min_responses} до {max_responses} отклика"
+msgstr[1] "От {min_responses} до {max_responses} откликов"
+msgstr[2] "От {min_responses} до {max_responses} откликов"
+
+#: src/classes/filters/responses.py:47
+msgid "Responses filter: {responses}"
+msgstr "Фильтр по откликам: {responses}"
+
+#: src/classes/filters/views.py:41
+msgid "Up to {max_views} view"
+msgid_plural "Up to {max_views} views"
+msgstr[0] "До {max_views} просмотра"
+msgstr[1] "До {max_views} просмотров"
+msgstr[2] "До {max_views} просмотров"
+
+#: src/classes/filters/views.py:43
+msgid "At least {min_views} view"
+msgid_plural "At least {min_views} views"
+msgstr[0] "От {min_views} просмотра"
+msgstr[1] "От {min_views} просмотров"
+msgstr[2] "От {min_views} просмотров"
+
+#: src/classes/filters/views.py:45
+msgid "From {min_views} to {max_views} view"
+msgid_plural "From {min_views} to {max_views} views"
+msgstr[0] "От {min_views} до {max_views} просмотра"
+msgstr[1] "От {min_views} до {max_views} просмотров"
+msgstr[2] "От {min_views} до {max_views} просмотров"
+
+#: src/classes/filters/views.py:47
+msgid "Views filter: {views}"
+msgstr "Фильтр по просмотрам: {views}"
+
+#: src/routers/filters_flow.py:19
+msgid ""
+"You have {filters_count} task filters:\n"
+"\n"
+"{filters}\n"
+"\n"
+"🔠 - case-sensitive filter\n"
+"❗️- negative filter"
+msgstr "У вас {filters_count} фильтров заказов:\n\n{filters}\n\n🔠 - фильтр с учётом регистра\n❗️- обратный фильтр"
+
 #: src/routers/start_flow.py:24
 msgid ""
 "Hello, i'm FLOculus-Bot!\n"
 "I can help you find freelance tasks on various freelance platforms."
-msgstr ""
-"Привет, я FLOculus бот\n"
-"Я могу помочь вам найти заказы на различных фриланс-площадках."
+msgstr "Привет, я FLOculus-бот!\nЯ могу помочь вам найти заказы на разных фриланс-платформах."
 
 #: src/routers/start_flow.py:25
 msgid ""
 "Please, provide your geolocation so i can display the time in your "
 "timezone."
-msgstr ""
-"Пожалуйста, предоставьте свою геолокацию, чтобы я мог отображать время в "
-"вашем часовом поясе."
+msgstr "Пожалуйста, предоставьте свою геолокацию для отображения времени в вашем часовом поясе."
 
 #: src/routers/start_flow.py:28
 msgid "Hello again!"
@@ -43,6 +172,10 @@ msgstr "Ещё раз привет!"
 msgid "Thanks, time will be displayed in your timezone ({timezone})"
 msgstr "Спасибо, время будет отображаться в вашем часовом поясе ({timezone})"
 
+#: src/routers/start_flow.py:45 src/utils/markups.py:8
+msgid "Skip"
+msgstr "Пропустить"
+
 #: src/routers/start_flow.py:48
 msgid "Ok, time will be displayed in UTC timezone."
 msgstr "Хорошо, время будет отображаться в стандартном часовом поясе UTC"
@@ -50,8 +183,4 @@ msgstr "Хорошо, время будет отображаться в стан
 #: src/utils/markups.py:7
 msgid "Provide geolocation"
 msgstr "Предоставить геолокацию"
-
-#: src/utils/markups.py:8
-msgid "Skip"
-msgstr "Пропустить"
 

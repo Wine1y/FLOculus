@@ -40,9 +40,9 @@ async def geolocation_skipped(message: types.Message, state: FSMContext):
     
     await message.answer(_("Thanks, time will be displayed in your timezone ({timezone})").format(
         timezone=f"{tz}, UTC{'+' if utc_offset_minutes > 0 else ''}{int(utc_offset_minutes//60)}"
-    ))
+    ), reply_markup=types.ReplyKeyboardRemove())
 
 @router.message(StateFilter(StartFlowStates.on_geolocation), F.text==__("Skip"))
 async def geolocation_skipped(message: types.Message, state: FSMContext):
     await state.clear()
-    await message.answer(_("Ok, time will be displayed in UTC timezone."))
+    await message.answer(_("Ok, time will be displayed in UTC timezone."), reply_markup=types.ReplyKeyboardRemove())

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-16 21:08+0500\n"
-"PO-Revision-Date: 2024-10-16 19:53+0500\n"
+"POT-Creation-Date: 2024-10-19 23:46+0500\n"
+"PO-Revision-Date: 2024-10-19 23:45+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
 "Language-Team: en <LL@li.org>\n"
@@ -17,6 +17,130 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.16.0\n"
+
+#: src/classes/filters/keyword.py:35
+msgid "Keyword filter: «{keyword}»"
+msgstr ""
+
+#: src/classes/filters/lifetime.py:43
+msgid "Up to {max_lifetime}"
+msgstr ""
+
+#: src/classes/filters/lifetime.py:45
+msgid "At least {min_lifetime}"
+msgstr ""
+
+#: src/classes/filters/lifetime.py:49
+msgid "From {min_lifetime} to {max_lifetime}"
+msgstr ""
+
+#: src/classes/filters/lifetime.py:51
+msgid "Lifetime filter: {lifetime}"
+msgstr ""
+
+#: src/classes/filters/lifetime.py:59
+msgid "{days} day"
+msgid_plural "{days} days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/classes/filters/lifetime.py:61
+msgid "{hours} hour"
+msgid_plural "{hours} hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/classes/filters/lifetime.py:63
+msgid "{minutes} minute"
+msgid_plural "{minutes} minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/classes/filters/price.py:10
+msgid "Undefined price"
+msgstr ""
+
+#: src/classes/filters/price.py:11
+msgid "Price per hour"
+msgstr ""
+
+#: src/classes/filters/price.py:12
+msgid "Price per project"
+msgstr ""
+
+#: src/classes/filters/price.py:49
+msgid "Up to {max_price}₽"
+msgstr ""
+
+#: src/classes/filters/price.py:51
+msgid "At least {min_price}₽"
+msgstr ""
+
+#: src/classes/filters/price.py:53
+msgid "From {min_price}₽ to {max_price}₽"
+msgstr ""
+
+#: src/classes/filters/price.py:55
+msgid "Price filter ({price_type}): {price}"
+msgstr ""
+
+#: src/classes/filters/regex.py:24
+msgid "Regex filter: «{regex}»"
+msgstr ""
+
+#: src/classes/filters/responses.py:41
+msgid "Up to {max_responses} response"
+msgid_plural "Up to {max_responses} responses"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/classes/filters/responses.py:43
+msgid "At least {min_responses} response"
+msgid_plural "At least {min_responses} responses"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/classes/filters/responses.py:45
+msgid "From {min_responses} to {max_responses} response"
+msgid_plural "From {min_responses} to {max_responses} responses"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/classes/filters/responses.py:47
+msgid "Responses filter: {responses}"
+msgstr ""
+
+#: src/classes/filters/views.py:41
+msgid "Up to {max_views} view"
+msgid_plural "Up to {max_views} views"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/classes/filters/views.py:43
+msgid "At least {min_views} view"
+msgid_plural "At least {min_views} views"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/classes/filters/views.py:45
+msgid "From {min_views} to {max_views} view"
+msgid_plural "From {min_views} to {max_views} views"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/classes/filters/views.py:47
+msgid "Views filter: {views}"
+msgstr ""
+
+#: src/routers/filters_flow.py:19
+msgid ""
+"You have {filters_count} task filters:\n"
+"\n"
+"{filters}\n"
+"\n"
+"🔠 - case-sensitive filter\n"
+"❗️- negative filter"
+msgstr ""
 
 #: src/routers/start_flow.py:24
 msgid ""
@@ -38,6 +162,10 @@ msgstr ""
 msgid "Thanks, time will be displayed in your timezone ({timezone})"
 msgstr ""
 
+#: src/routers/start_flow.py:45 src/utils/markups.py:8
+msgid "Skip"
+msgstr ""
+
 #: src/routers/start_flow.py:48
 msgid "Ok, time will be displayed in UTC timezone."
 msgstr ""
@@ -46,7 +174,15 @@ msgstr ""
 msgid "Provide geolocation"
 msgstr ""
 
-#: src/utils/markups.py:8
-msgid "Skip"
+#: src/utils/markups.py:13
+msgid "Add filter"
+msgstr ""
+
+#: src/utils/markups.py:14
+msgid "Remove filter"
+msgstr ""
+
+#: src/utils/markups.py:15
+msgid "Back"
 msgstr ""
 

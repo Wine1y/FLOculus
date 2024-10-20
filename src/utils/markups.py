@@ -6,4 +6,4 @@ def get_geo_request_markup() -> ReplyKeyboardMarkup:
     return ReplyKeyboardMarkup(keyboard=[
         [KeyboardButton(text=_("Provide geolocation"), request_location=True)],
         [KeyboardButton(text=_("Skip"))]
-    ], resize_keyboard=True, one_time_keyboard=True)
+    ], resize_keyboard=True)
