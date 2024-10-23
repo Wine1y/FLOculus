@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-19 23:46+0500\n"
+"POT-Creation-Date: 2024-10-23 15:07+0500\n"
 "PO-Revision-Date: 2024-10-19 23:45+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -142,7 +142,7 @@ msgstr[2] "От {min_views} до {max_views} просмотров"
 msgid "Views filter: {views}"
 msgstr "Фильтр по просмотрам: {views}"
 
-#: src/routers/filters_flow.py:19
+#: src/routers/filters_flow.py:22
 msgid ""
 "You have {filters_count} task filters:\n"
 "\n"
@@ -150,19 +150,140 @@ msgid ""
 "\n"
 "🔠 - case-sensitive filter\n"
 "❗️- negative filter"
-msgstr "У вас {filters_count} фильтров заказов:\n\n{filters}\n\n🔠 - фильтр с учётом регистра\n❗️- обратный фильтр"
+msgstr ""
+"У вас {filters_count} фильтров заказов:\n"
+"\n"
+"{filters}\n"
+"\n"
+"🔠 - фильтр с учётом регистра\n"
+"❗️- обратный фильтр"
+
+#: src/routers/filters_flow.py:31 src/utils/markups.py:13
+msgid "Manage task filters"
+msgstr "Настроить фильтры заказов"
+
+#: src/routers/filters_flow.py:37 src/utils/markups.py:20
+msgid "Back"
+msgstr "Назад"
+
+#: src/routers/filters_flow.py:39
+msgid "Ok, let's go back to main menu"
+msgstr "Хорошо, вернёмся к главному меню"
+
+#: src/routers/filters_flow.py:42 src/utils/markups.py:18
+msgid "Add filter"
+msgstr "Добавить фильтр"
+
+#: src/routers/filters_flow.py:45
+msgid "Please, select new filter type"
+msgstr "Пожалуйста, выберите тип нового фильтра"
+
+#: src/routers/filters_flow.py:50 src/routers/filters_flow.py:121
+#: src/utils/filter_creation_flow/stages.py:37 src/utils/markups.py:28
+#: src/utils/markups.py:33
+msgid "Cancel"
+msgstr "Отмена"
+
+#: src/routers/filters_flow.py:52
+msgid "Filter creation cancelled"
+msgstr "Создание фильтра отменено"
+
+#: src/routers/filters_flow.py:61 src/utils/markups.py:25
+msgid "🔤Keyword"
+msgstr "🔤Текстовый"
+
+#: src/routers/filters_flow.py:62 src/utils/markups.py:25
+msgid "*️⃣Regex"
+msgstr "*️⃣Регулярное выражение"
+
+#: src/routers/filters_flow.py:63 src/utils/markups.py:26
+msgid "👁Views"
+msgstr "👁По просмотрам"
+
+#: src/routers/filters_flow.py:64 src/utils/markups.py:26
+msgid "✉️Responses"
+msgstr "✉️По отзывам"
+
+#: src/routers/filters_flow.py:65 src/utils/markups.py:27
+msgid "💰Price"
+msgstr "💰По оплате"
+
+#: src/routers/filters_flow.py:66 src/utils/markups.py:27
+msgid "📅Lifetime"
+msgstr "📅По времени существования"
+
+#: src/routers/filters_flow.py:71
+msgid "Please, provide a valid filter type"
+msgstr "Пожалуйста, выберите валидный тип фильтра"
+
+#: src/routers/filters_flow.py:83 src/routers/start_flow.py:45
+#: src/utils/filter_creation_flow/stages.py:36 src/utils/markups.py:8
+msgid "Skip"
+msgstr "Пропустить"
+
+#: src/routers/filters_flow.py:85
+msgid "This question can't be skipped"
+msgstr "Этот вопрос нельзя пропустить"
+
+#: src/routers/filters_flow.py:91
+msgid "Please, provide a valid answer"
+msgstr "Пожалуйста, предоставьте валидный ответ"
+
+#: src/routers/filters_flow.py:103
+msgid "Invalid filter data, please try again."
+msgstr "Данные невалидны, попробуйте ещё раз"
+
+#: src/routers/filters_flow.py:109
+msgid ""
+"New filter successfully created:\n"
+"{filter}"
+msgstr ""
+"Новый фильтр успешно создан:\n"
+"{filter}"
+
+#: src/routers/filters_flow.py:113 src/utils/markups.py:19
+msgid "Remove filter"
+msgstr "Удалить фильтр"
+
+#: src/routers/filters_flow.py:116
+msgid "Please, enter the filter ID (shown in brackets before the filter type)"
+msgstr "Пожалуйста, введите ID фильтра (указан в скобках перед типом фильтра)"
+
+#: src/routers/filters_flow.py:123
+msgid "Filter removal cancelled"
+msgstr "Удаление фильтра отменено"
+
+#: src/routers/filters_flow.py:134
+msgid "Please, provide a valid filter ID"
+msgstr "Пожалуйста, предоставьте валидный ID фильтра"
+
+#: src/routers/filters_flow.py:143
+msgid "Filter with prodived ID was not found, try again."
+msgstr "Фильтр с указанным ID не найден, попробуйте ещё раз"
+
+#: src/routers/filters_flow.py:148
+msgid ""
+"Filter was successfully deleted:\n"
+"{filter}"
+msgstr ""
+"Фильтр успешно удалён:\n"
+"{filter}"
 
 #: src/routers/start_flow.py:24
 msgid ""
 "Hello, i'm FLOculus-Bot!\n"
 "I can help you find freelance tasks on various freelance platforms."
-msgstr "Привет, я FLOculus-бот!\nЯ могу помочь вам найти заказы на разных фриланс-платформах."
+msgstr ""
+"Привет, я FLOculus-бот!\n"
+"Я могу помочь вам найти заказы на разных фриланс-платформах."
 
 #: src/routers/start_flow.py:25
 msgid ""
 "Please, provide your geolocation so i can display the time in your "
 "timezone."
-msgstr "Пожалуйста, предоставьте свою геолокацию для отображения времени в вашем часовом поясе."
+msgstr ""
+"Пожалуйста, предоставьте свою геолокацию для отображения времени в вашем "
+"часовом поясе."
 
 #: src/routers/start_flow.py:28
 msgid "Hello again!"
@@ -172,11 +293,7 @@ msgstr "Ещё раз привет!"
 msgid "Thanks, time will be displayed in your timezone ({timezone})"
 msgstr "Спасибо, время будет отображаться в вашем часовом поясе ({timezone})"
 
-#: src/routers/start_flow.py:45 src/utils/markups.py:8
-msgid "Skip"
-msgstr "Пропустить"
-
-#: src/routers/start_flow.py:48
+#: src/routers/start_flow.py:49
 msgid "Ok, time will be displayed in UTC timezone."
 msgstr "Хорошо, время будет отображаться в стандартном часовом поясе UTC"
 
@@ -184,3 +301,69 @@ msgstr "Хорошо, время будет отображаться в стан
 msgid "Provide geolocation"
 msgstr "Предоставить геолокацию"
 
+#: src/utils/filter_creation_flow/flows.py:50
+msgid "Please, enter filter keyword"
+msgstr "Пожалуйста, введите ключевое слово фильтра"
+
+#: src/utils/filter_creation_flow/flows.py:51
+msgid "Make filter case-sensitive (Yes/No)?"
+msgstr "Сделать фильтр чувствительным к регистру (Да/Нет)?"
+
+#: src/utils/filter_creation_flow/flows.py:52
+#: src/utils/filter_creation_flow/flows.py:59
+#: src/utils/filter_creation_flow/flows.py:67
+#: src/utils/filter_creation_flow/flows.py:84
+#: src/utils/filter_creation_flow/flows.py:108
+#: src/utils/filter_creation_flow/flows.py:125
+msgid "Make filter negative (Yes/No)?"
+msgstr "Сделать фильтр обратным (Да/Нет)?"
+
+#: src/utils/filter_creation_flow/flows.py:58
+msgid "Please, enter filter regex"
+msgstr "Пожалуйста, введите регулярное выражение фильтра"
+
+#: src/utils/filter_creation_flow/flows.py:65
+msgid "Please, enter min views amount"
+msgstr "Пожалуйста, введите минимальное количество просмотров"
+
+#: src/utils/filter_creation_flow/flows.py:66
+msgid "Please, enter max views amount"
+msgstr "Пожалуйста, введите максимальное количество просмотров"
+
+#: src/utils/filter_creation_flow/flows.py:82
+msgid "Please, enter min responses amount"
+msgstr "Пожалуйста, введите минимальное количество откликов"
+
+#: src/utils/filter_creation_flow/flows.py:83
+msgid "Please, enter max responses amount"
+msgstr Пожалуйста, введите максимальное количество просмотров""
+
+#: src/utils/filter_creation_flow/flows.py:99
+msgid "Please, enter filter price type"
+msgstr "Пожалуйста, введите тип цены фильтра"
+
+#: src/utils/filter_creation_flow/flows.py:106
+msgid "Please, enter min price ₽"
+msgstr "Пожалуйста, введите минимальную цену ₽"
+
+#: src/utils/filter_creation_flow/flows.py:107
+msgid "Please, enter max price ₽"
+msgstr "Пожалуйста, введите максимальную цену ₽"
+
+#: src/utils/filter_creation_flow/flows.py:123
+msgid "Please, enter min lifetime in seconds"
+msgstr "Пожалуйста, введите минимальное время существования заказа в секундах"
+
+#: src/utils/filter_creation_flow/flows.py:124
+msgid "Please, enter max lifetime in seconds"
+msgstr "Пожалуйста, введите максимальное время существования заказа в секундах"
+
+#: src/utils/filter_creation_flow/stages.py:44
+#: src/utils/filter_creation_flow/stages.py:51
+msgid "Yes"
+msgstr "Да"
+
+#: src/utils/filter_creation_flow/stages.py:46
+#: src/utils/filter_creation_flow/stages.py:51
+msgid "No"
+msgstr "Нет"

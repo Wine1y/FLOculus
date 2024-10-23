@@ -50,7 +50,46 @@ class FilterEntry(BaseModel):
                 return filters.PriceTaskFilter(self.price_type, self.min_price, self.max_price, self.is_negative)
             case filters.FilterType.LIFETIME:
                 return filters.LifetimeTaskFilter(
-                    timedelta(seconds=self.min_lifetime_seconds),
-                    timedelta(seconds=self.max_lifetime_seconds),
+                    timedelta(seconds=self.min_lifetime_seconds) if self.min_lifetime_seconds is not None else None,
+                    timedelta(seconds=self.max_lifetime_seconds) if self.max_lifetime_seconds is not None else None,
                     self.is_negative
+                )
+    
+    @classmethod
+    def from_filter(cls, owner_id: int, filter: filters.TaskFilter) -> "FilterEntry":
+        match filter.__class__:
+            case filters.KeywordTaskFilter:
+                return FilterEntry(
+                    owner_id=owner_id, filter_type=filters.FilterType.KEYWORD,
+                    keyword=filter.keyword, case_sensitive=filter.case_sensitive, is_negative=filter.is_negative
+                )
+            case filters.RegexTaskFilter:
+                return FilterEntry(
+                    owner_id=owner_id, filter_type=filters.FilterType.REGEX,
+                    regex=filter.regexp.pattern, is_negative=filter.is_negative
+                )
+            case filters.ViewsTaskFilter:
+                return FilterEntry(
+                    owner_id=owner_id, filter_type=filters.FilterType.VIEWS,
+                    min_views=filter.min_views, max_views=filter.max_views, is_negative=filter.is_negative
+                )
+            case filters.ResponsesTaskFilter:
+                return FilterEntry(
+                    owner_id=owner_id, filter_type=filters.FilterType.RESPONSES,
+                    min_responses=filter.min_responses, max_responses=filter.max_responses, is_negative=filter.is_negative
+                )
+            case filters.PriceTaskFilter:
+                return FilterEntry(
+                    owner_id=owner_id, filter_type=filters.FilterType.PRICE,
+                    price_type=filter.price_type, min_price=filter.min_price,
+                    max_price=filter.max_price, is_negative=filter.is_negative
+                )
+            case filters.LifetimeTaskFilter:
+                min_lifetime = None if filter.min_lifetime is None else filter.min_lifetime.total_seconds()
+                max_lifetime = None if filter.max_lifetime is None else filter.max_lifetime.total_seconds()
+                return FilterEntry(
+                    owner_id=owner_id, filter_type=filters.FilterType.LIFETIME,
+                    min_lifetime_seconds=min_lifetime,
+                    max_lifetime_seconds=max_lifetime,
+                    is_negative=filter.is_negative
                 )

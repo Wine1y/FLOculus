@@ -8,7 +8,7 @@ from tzfpy import get_tz
 from pytz import timezone
 
 from db import User, UserRepository
-from utils.markups import get_geo_request_markup
+from utils.markups import get_geo_request_markup, get_main_menu_markup
 from utils.states.start_flow import StartFlowStates
 
 
@@ -40,9 +40,12 @@ async def geolocation_skipped(message: types.Message, state: FSMContext):
     
     await message.answer(_("Thanks, time will be displayed in your timezone ({timezone})").format(
         timezone=f"{tz}, UTC{'+' if utc_offset_minutes > 0 else ''}{int(utc_offset_minutes//60)}"
-    ), reply_markup=types.ReplyKeyboardRemove())
+    ), reply_markup=get_main_menu_markup())
 
-@router.message(StateFilter(StartFlowStates.on_geolocation), F.text==__("Skip"))
+@router.message(StateFilter(StartFlowStates.on_geolocation), F.text.capitalize()==__("Skip"))
 async def geolocation_skipped(message: types.Message, state: FSMContext):
     await state.clear()
-    await message.answer(_("Ok, time will be displayed in UTC timezone."), reply_markup=types.ReplyKeyboardRemove())
+    await message.answer(
+        _("Ok, time will be displayed in UTC timezone."),
+        reply_markup=get_main_menu_markup()
+    )
