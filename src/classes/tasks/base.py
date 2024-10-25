@@ -1,6 +1,6 @@
 from enum import Enum
 from dataclasses import dataclass, field
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Optional, List
 from datetime import datetime
 
@@ -11,7 +11,12 @@ class PriceType(Enum):
     PER_HOUR = "Per Hour"
 
 @dataclass
+class TaskAuthor(ABC):
+    name: str
+    
+@dataclass
 class Task(ABC):
+    id: str
     title: str
     description: Optional[str] = field(default=None)
     views: Optional[int] = field(default=None)
@@ -20,3 +25,9 @@ class Task(ABC):
     tags: List[str] = field(default_factory=list)
     price: Optional[int] = field(default=None)
     price_type: PriceType = field(default=PriceType.UNDEFINED)
+    author: Optional[TaskAuthor] = field(default=None)
+
+    @property
+    @abstractmethod
+    def posted_at_time_mark(self) -> int:
+        ...

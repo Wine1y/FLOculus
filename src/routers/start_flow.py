@@ -5,7 +5,7 @@ from aiogram.filters import CommandStart, StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.utils.i18n import gettext as _, lazy_gettext as __
 from tzfpy import get_tz
-from pytz import timezone
+from zoneinfo import ZoneInfo
 
 from db import User, UserRepository
 from utils.markups import get_geo_request_markup, get_main_menu_markup
@@ -30,7 +30,7 @@ async def start(message: types.Message, state: FSMContext):
 @router.message(StateFilter(StartFlowStates.on_geolocation), F.location)
 async def geolocation_skipped(message: types.Message, state: FSMContext):
     await state.clear()
-    tz = timezone(get_tz(message.location.longitude, message.location.latitude))
+    tz = ZoneInfo(get_tz(message.location.longitude, message.location.latitude))
     utc_offset_minutes = datetime.now(tz).utcoffset().total_seconds()//60
 
     async with UserRepository() as rep:

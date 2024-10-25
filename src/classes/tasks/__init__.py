@@ -1,1 +1,2 @@
-from .base import Task, PriceType
+from .base import Task, TaskAuthor, PriceType
+from .habr import HabrTask, HabrTaskAuthor
