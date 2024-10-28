@@ -12,7 +12,7 @@ class PriceType(Enum):
 
 @dataclass
 class TaskAuthor(ABC):
-    name: str
+    name: Optional[str]
     
 @dataclass
 class Task(ABC):
@@ -26,6 +26,7 @@ class Task(ABC):
     price: Optional[int] = field(default=None)
     price_type: PriceType = field(default=PriceType.UNDEFINED)
     author: Optional[TaskAuthor] = field(default=None)
+    raised: Optional[bool] = field(default=None)
 
     @property
     @abstractmethod

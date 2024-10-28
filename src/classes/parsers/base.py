@@ -9,6 +9,8 @@ class PlatformParser(ABC):
         break_if_old = False
         async for task in self._parse_tasks():
             if task.posted_at_time_mark <= last_time_mark:
+                if task.raised:
+                    continue
                 if break_if_old:
                     break
                 break_if_old = True
