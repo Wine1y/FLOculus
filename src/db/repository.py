@@ -12,8 +12,8 @@ class Repository(Generic[model]):
     session: AsyncSession
     repository_model: model
 
-    def __init__(self):
-        self.session = async_session()
+    def __init__(self, session: Optional[AsyncSession]=None):
+        self.session = session or async_session()
 
     async def close(self) -> None:
         await self.session.close()

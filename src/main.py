@@ -7,6 +7,7 @@ from aiogram.utils.i18n import I18n
 from aiogram.utils.i18n.middleware import SimpleI18nMiddleware
 
 import routers
+from utils.platform_parsers import init_platforms_db
 
 
 logging.basicConfig(
@@ -23,6 +24,9 @@ async def main():
 
     dp.include_router(routers.StartFlowRouter)
     dp.include_router(routers.FiltersFlowRouter)
+    dp.include_router(routers.PlatformsFlowRouter)
+
+    await init_platforms_db()
 
     logging.warning("Starting polling")
     await dp.start_polling(bot)

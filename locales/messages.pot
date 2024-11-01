@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-23 15:07+0500\n"
+"POT-Creation-Date: 2024-11-01 15:16+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -141,19 +141,20 @@ msgid ""
 "❗️- negative filter"
 msgstr ""
 
-#: src/routers/filters_flow.py:31 src/utils/markups.py:13
+#: src/routers/filters_flow.py:31 src/utils/markups.py:16
 msgid "Manage task filters"
 msgstr ""
 
-#: src/routers/filters_flow.py:37 src/utils/markups.py:20
+#: src/routers/filters_flow.py:37 src/routers/platforms_flow.py:53
+#: src/utils/markups.py:26 src/utils/markups.py:54
 msgid "Back"
 msgstr ""
 
-#: src/routers/filters_flow.py:39
+#: src/routers/filters_flow.py:39 src/routers/platforms_flow.py:55
 msgid "Ok, let's go back to main menu"
 msgstr ""
 
-#: src/routers/filters_flow.py:42 src/utils/markups.py:18
+#: src/routers/filters_flow.py:42 src/utils/markups.py:23
 msgid "Add filter"
 msgstr ""
 
@@ -161,9 +162,9 @@ msgstr ""
 msgid "Please, select new filter type"
 msgstr ""
 
-#: src/routers/filters_flow.py:50 src/routers/filters_flow.py:121
-#: src/utils/filter_creation_flow/stages.py:37 src/utils/markups.py:28
-#: src/utils/markups.py:33
+#: src/routers/filters_flow.py:50 src/routers/filters_flow.py:123
+#: src/routers/platforms_flow.py:60 src/utils/filter_creation_flow/stages.py:37
+#: src/utils/markups.py:36 src/utils/markups.py:41 src/utils/markups.py:66
 msgid "Cancel"
 msgstr ""
 
@@ -171,27 +172,27 @@ msgstr ""
 msgid "Filter creation cancelled"
 msgstr ""
 
-#: src/routers/filters_flow.py:61 src/utils/markups.py:25
+#: src/routers/filters_flow.py:61 src/utils/markups.py:33
 msgid "🔤Keyword"
 msgstr ""
 
-#: src/routers/filters_flow.py:62 src/utils/markups.py:25
+#: src/routers/filters_flow.py:62 src/utils/markups.py:33
 msgid "*️⃣Regex"
 msgstr ""
 
-#: src/routers/filters_flow.py:63 src/utils/markups.py:26
+#: src/routers/filters_flow.py:63 src/utils/markups.py:34
 msgid "👁Views"
 msgstr ""
 
-#: src/routers/filters_flow.py:64 src/utils/markups.py:26
+#: src/routers/filters_flow.py:64 src/utils/markups.py:34
 msgid "✉️Responses"
 msgstr ""
 
-#: src/routers/filters_flow.py:65 src/utils/markups.py:27
+#: src/routers/filters_flow.py:65 src/utils/markups.py:35
 msgid "💰Price"
 msgstr ""
 
-#: src/routers/filters_flow.py:66 src/utils/markups.py:27
+#: src/routers/filters_flow.py:66 src/utils/markups.py:35
 msgid "📅Lifetime"
 msgstr ""
 
@@ -200,7 +201,7 @@ msgid "Please, provide a valid filter type"
 msgstr ""
 
 #: src/routers/filters_flow.py:83 src/routers/start_flow.py:45
-#: src/utils/filter_creation_flow/stages.py:36 src/utils/markups.py:8
+#: src/utils/filter_creation_flow/stages.py:36 src/utils/markups.py:11
 msgid "Skip"
 msgstr ""
 
@@ -212,40 +213,90 @@ msgstr ""
 msgid "Please, provide a valid answer"
 msgstr ""
 
-#: src/routers/filters_flow.py:103
+#: src/routers/filters_flow.py:106
 msgid "Invalid filter data, please try again."
 msgstr ""
 
-#: src/routers/filters_flow.py:109
+#: src/routers/filters_flow.py:111
 msgid ""
 "New filter successfully created:\n"
 "{filter}"
 msgstr ""
 
-#: src/routers/filters_flow.py:113 src/utils/markups.py:19
+#: src/routers/filters_flow.py:115 src/utils/markups.py:25
 msgid "Remove filter"
 msgstr ""
 
-#: src/routers/filters_flow.py:116
+#: src/routers/filters_flow.py:118
 msgid "Please, enter the filter ID (shown in brackets before the filter type)"
 msgstr ""
 
-#: src/routers/filters_flow.py:123
+#: src/routers/filters_flow.py:125
 msgid "Filter removal cancelled"
 msgstr ""
 
-#: src/routers/filters_flow.py:134
+#: src/routers/filters_flow.py:136
 msgid "Please, provide a valid filter ID"
 msgstr ""
 
-#: src/routers/filters_flow.py:143
+#: src/routers/filters_flow.py:145
 msgid "Filter with prodived ID was not found, try again."
 msgstr ""
 
-#: src/routers/filters_flow.py:148
+#: src/routers/filters_flow.py:150
 msgid ""
 "Filter was successfully deleted:\n"
 "{filter}"
+msgstr ""
+
+#: src/routers/platforms_flow.py:27
+msgid ""
+"You are subscribed to {enabled_platform_count} platform out of "
+"{platform_count} available:\n"
+"\n"
+"{platforms}"
+msgid_plural ""
+"You are subscribed to {enabled_platform_count} platforms out of "
+"{platform_count} available:\n"
+"\n"
+"{platforms}"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/routers/platforms_flow.py:42 src/utils/markups.py:17
+msgid "Manage platforms"
+msgstr ""
+
+#: src/routers/platforms_flow.py:72 src/utils/markups.py:53
+msgid "Unsubscribe from the platform"
+msgstr ""
+
+#: src/routers/platforms_flow.py:81 src/routers/platforms_flow.py:124
+msgid "Please, select a platform name"
+msgstr ""
+
+#: src/routers/platforms_flow.py:96 src/routers/platforms_flow.py:138
+msgid "Platform was not found, try again."
+msgstr ""
+
+#: src/routers/platforms_flow.py:102
+msgid "You're not subscribed to this platform"
+msgstr ""
+
+#: src/routers/platforms_flow.py:109
+msgid "You have unsubscribed from the platform \"{platform}\""
+msgstr ""
+
+#: src/routers/platforms_flow.py:116 src/utils/markups.py:51
+msgid "Subscribe to the platform"
+msgstr ""
+
+#: src/routers/platforms_flow.py:146
+msgid "You're already subscribed to this platform"
+msgstr ""
+
+#: src/routers/platforms_flow.py:151
+msgid "You have subscribed to the platform \"{platform}\""
 msgstr ""
 
 #: src/routers/start_flow.py:24
@@ -272,7 +323,7 @@ msgstr ""
 msgid "Ok, time will be displayed in UTC timezone."
 msgstr ""
 
-#: src/utils/markups.py:7
+#: src/utils/markups.py:10
 msgid "Provide geolocation"
 msgstr ""
 
