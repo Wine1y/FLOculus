@@ -21,6 +21,7 @@ PRICE_TYPES = {
 }
 
 class FlRuParser(BS4PlatformParser):
+    name: str = "fl.ru"
     base_url: str = "https://www.fl.ru"
 
     async def _parse_tasks(self) -> AsyncGenerator[FlRuTask, None]:
@@ -78,23 +79,33 @@ class FlRuParser(BS4PlatformParser):
             soup.select_one("div.text-right>div.text-4:first-child > span")
         ).replace('\n', '')
         price_match: re.Match = PRICE_RE.match(price_str)
-        min_price, max_price = price_match.group("min_price"), price_match.group("max_price")
-        if (group := price_match.group("price_range")) is not None:
-            min_price, max_price = group.replace(' ', '').split('—')
+
+        if price_match is None:
+            price = min_price = max_price = None
+            price_type = PriceType.UNDEFINED
+        else:
+            price_type=PRICE_TYPES.get(price_match.group("price_type")) or PriceType.UNDEFINED
+            price = int(group.replace(' ', '')) if (group := price_match.group("fixed_price")) is not None else None
+            min_price, max_price = price_match.group("min_price"), price_match.group("max_price")
+            if (group := price_match.group("price_range")) is not None:
+                min_price, max_price = group.replace(' ', '').split('—')
+            min_price = int(min_price.replace(' ', '')) if min_price is not None else None
+            max_price = int(max_price.replace(' ', '')) if max_price is not None else None
 
         return FlRuTask(
             id=task_id,
             title=self._get_tag_text(soup.select_one("h1.text-1")),
+            url=f"{self.base_url}{path}",
             description=self._get_tag_text(soup.select_one(f"div#projectp{task_id}")),
             views=None,
             responses=responses,
             posted_at=datetime.strptime(
                 self._get_tag_text(soup.select_one("div.b-layout__txt.mt-32 .text-5"))[:18], r"%d.%m.%Y | %H:%M"
             ).replace(tzinfo=ZoneInfo("Europe/Moscow")),
-            price=int(group.replace(' ', '')) if (group := price_match.group("fixed_price")) is not None else None,
-            min_price=int(min_price.replace(' ', '')) if min_price is not None else None,
-            max_price=int(max_price.replace(' ', '')) if max_price is not None else None,
-            price_type=PRICE_TYPES.get(price_match.group("price_type")) or PriceType.UNDEFINED,
+            price=price,
+            min_price=min_price,
+            max_price=max_price,
+            price_type=price_type,
             author=author,
             raised=raised,
             deadline=self._get_tag_text(soup.select("div.text-right div.text-4>span")[-1]),

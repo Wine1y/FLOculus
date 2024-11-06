@@ -1,3 +1,4 @@
+import logging
 from abc import ABC
 from typing import Type, Dict, Any, Optional
 from datetime import timedelta
@@ -11,6 +12,7 @@ from classes import filters, tasks
 class InvalidFlowData(Exception):
     ...
 
+log = logging.getLogger(__name__)
 
 class FilterCreationFlow(ABC):
     filter_type: Type[filters.TaskFilter]
@@ -42,6 +44,7 @@ class FilterCreationFlow(ABC):
         self.flow_data[stage.data_key] = None if answer is None else stage.process_answer(answer)
     
     def build_filter(self) -> filters.TaskFilter:
+        log.debug(f"Building filter {self.filter_type} with flow data: {self.flow_data}")
         return self.filter_type(**self.flow_data)
 
 class KeywordFilterCreationFlow(FilterCreationFlow):
@@ -99,7 +102,7 @@ class PriceFilterCreationFlow(FilterCreationFlow):
         stages.EnumCreationFlowStage("price_type", __("Please, enter filter price type"),
             {
                 price_type: translation
-                for price_type, translation in filters.price.PRICE_TYPE_TO_TRANSLATION.items()
+                for price_type, translation in tasks.PRICE_TYPE_TO_TRANSLATION.items()
                 if price_type != tasks.PriceType.UNDEFINED
             }
         ),

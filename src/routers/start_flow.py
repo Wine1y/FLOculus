@@ -21,7 +21,10 @@ async def start(message: types.Message, state: FSMContext):
     
     if user is None:
         await rep.create(User(telegram_id=message.from_user.id))
-        await message.answer(_("Hello, i'm FLOculus-Bot!\nI can help you find freelance tasks on various freelance platforms."))
+        await message.answer(
+            _("Hello, i'm <b>FLOculus-Bot</b>!\nI can help you find freelance tasks on various freelance platforms."),
+            parse_mode="HTML"
+        )
         await message.answer(_("Please, provide your geolocation so i can display the time in your timezone."), reply_markup=get_geo_request_markup())
         await state.set_state(StartFlowStates.on_geolocation)
     else:
@@ -38,14 +41,19 @@ async def geolocation_skipped(message: types.Message, state: FSMContext):
         user.utc_offset_minutes = utc_offset_minutes
         await rep.commit()
     
-    await message.answer(_("Thanks, time will be displayed in your timezone ({timezone})").format(
-        timezone=f"{tz}, UTC{'+' if utc_offset_minutes > 0 else ''}{int(utc_offset_minutes//60)}"
-    ), reply_markup=get_main_menu_markup())
+    await message.answer(
+        _("Thanks, time will be displayed in your timezone ({timezone})").format(
+            timezone=f"<b>{tz}</b>, UTC{'+' if utc_offset_minutes > 0 else ''}{int(utc_offset_minutes//60)}"
+        ),
+        reply_markup=get_main_menu_markup(),
+        parse_mode="HTML"
+    )
 
 @router.message(StateFilter(StartFlowStates.on_geolocation), F.text.capitalize()==__("Skip"))
 async def geolocation_skipped(message: types.Message, state: FSMContext):
     await state.clear()
     await message.answer(
-        _("Ok, time will be displayed in UTC timezone."),
-        reply_markup=get_main_menu_markup()
+        _("Ok, time will be displayed in <b>UTC</b> timezone."),
+        reply_markup=get_main_menu_markup(),
+        parse_mode="HTML"
     )

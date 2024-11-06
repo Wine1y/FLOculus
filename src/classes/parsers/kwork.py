@@ -13,6 +13,7 @@ from ..tasks.kwork import TaskAttachment
 STATE_DATA_RE = re.compile(r"window\.stateData ?= ?(?P<state_data>{.+})")
 
 class KworkParser(BS4PlatformParser):
+    name: str = "kwork.ru"
     base_url: str = "https://kwork.ru"
 
     async def _parse_tasks(self) -> AsyncGenerator[KworkTask, None]:
@@ -50,9 +51,10 @@ class KworkParser(BS4PlatformParser):
         return KworkTask(
             id=task_json["id"],
             title=task_json["name"],
+            url=f"{self.base_url}/projects/{task_json['id']}/view",
             description=task_json["description"],
-            views=task_json["views_dirty"],
-            responses=task_json["kwork_count"],
+            views=int(task_json["views_dirty"]),
+            responses=int(task_json["kwork_count"]),
             posted_at=datetime.strptime(
                 task_json["date_create"], "%Y-%m-%d %H:%M:%S"
             ).replace(tzinfo=ZoneInfo("Europe/Moscow")),

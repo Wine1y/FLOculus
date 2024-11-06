@@ -1,5 +1,8 @@
-from typing import List
+from typing import List, Optional
 from dataclasses import dataclass, field
+from datetime import tzinfo
+
+from aiogram.utils.i18n import gettext as _
 
 from .base import Task, TaskAuthor
 
@@ -11,6 +14,9 @@ class HabrTaskAuthor(TaskAuthor):
     tasks_in_arbitration: int
     positive_reviews: int
     negative_reviews: int
+
+    def translated_str(self, tz: tzinfo) -> str:
+        return f"{super().translated_str(tz)}[+{self.positive_reviews} | -{self.negative_reviews} | ✅{self.completed_tasks} ⚠️{self.active_tasks} ❗️{self.tasks_in_arbitration}]"
 
 @dataclass
 class TaskAttachment():
@@ -24,3 +30,8 @@ class HabrTask(Task):
     @property
     def posted_at_time_mark(self) -> int:
         return int(self.id)
+    
+    def metadata_translated_strings(self, tz: tzinfo) -> List[Optional[str]]:
+        return [
+            _("Files Attached: <b>{files_attached}</b>").format(files_attached=len(self.attachments)) if len(self.attachments) > 0 else None
+        ]

@@ -19,11 +19,12 @@ router = Router()
 async def _answer_filters_list(message: types.Message, user: User, state: FSMContext):
     filter_entries = await user.awaitable_attrs.filters
     await message.answer(
-        _("You have {filters_count} task filters:\n\n{filters}\n\n🔠 - case-sensitive filter\n❗️- negative filter").format(
+        _("You have <b>{filters_count}</b> task filters:\n\n{filters}\n\n🔠 - case-sensitive filter\n❗️- negative filter").format(
             filters_count=len(filter_entries),
             filters='\n'.join([f"[#{filter_entry.id}] {filter_entry.to_filter().translated_str()}" for filter_entry in filter_entries])
         ),
-        reply_markup=get_filters_menu_markup(add_delete_button=len(filter_entries) > 0)
+        reply_markup=get_filters_menu_markup(add_delete_button=len(filter_entries) > 0),
+        parse_mode="HTML"
     )
     await state.set_state(FiltersFlowStates.on_filters_menu)
 
@@ -108,7 +109,10 @@ async def in_creation_flow(message: types.Message, state: FSMContext):
             return
     
         await filter_rep.create(FilterEntry.from_filter(user.id, new_filter))
-        await message.answer(_("New filter successfully created:\n{filter}").format(filter=new_filter.translated_str()))
+        await message.answer(
+            _("New filter successfully created:\n{filter}").format(filter=new_filter.translated_str()),
+            parse_mode="HTML"
+        )
         await state.clear()
         await _answer_filters_list(message, user, state)
 
@@ -147,5 +151,8 @@ async def remove_filter_id_selected(message: types.Message, state: FSMContext):
             return
         await filter_rep.delete(filter_entry)
         await state.clear()
-        await message.answer(_("Filter was successfully deleted:\n{filter}").format(filter=filter_entry.to_filter().translated_str()))
+        await message.answer(
+            _("Filter was successfully deleted:\n{filter}").format(filter=filter_entry.to_filter().translated_str()),
+            parse_mode="HTML"
+        )
         await _answer_filters_list(message, user, state)

@@ -1,6 +1,9 @@
 from typing import List
 
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+from aiogram.types import (
+                            ReplyKeyboardMarkup, KeyboardButton,
+                            InlineKeyboardMarkup, InlineKeyboardButton
+                          )
 from aiogram.utils.i18n import gettext as _
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
 
@@ -67,3 +70,8 @@ def get_platforms_list_markup(platform_names: List[str]) -> ReplyKeyboardMarkup:
     keyboard = builder.as_markup()
     keyboard.resize_keyboard = True
     return keyboard
+
+def get_open_task_markup(task_url: str) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(inline_keyboard=[
+        [InlineKeyboardButton(text=_("Open Task"), url=task_url)]
+    ])

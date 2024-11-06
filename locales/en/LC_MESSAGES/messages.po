@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-11-01 15:16+0500\n"
+"POT-Creation-Date: 2024-11-06 16:36+0500\n"
 "PO-Revision-Date: 2024-10-19 23:45+0500\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -18,8 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.16.0\n"
 
-#: src/classes/filters/keyword.py:35
-msgid "Keyword filter: «{keyword}»"
+#: src/classes/filters/keyword.py:37
+msgid "Keyword filter: <b>«{keyword}»</b>"
 msgstr ""
 
 #: src/classes/filters/lifetime.py:43
@@ -35,7 +35,7 @@ msgid "From {min_lifetime} to {max_lifetime}"
 msgstr ""
 
 #: src/classes/filters/lifetime.py:51
-msgid "Lifetime filter: {lifetime}"
+msgid "Lifetime filter: <b>{lifetime}</b>"
 msgstr ""
 
 #: src/classes/filters/lifetime.py:59
@@ -56,36 +56,25 @@ msgid_plural "{minutes} minutes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/classes/filters/price.py:10
-msgid "Undefined price"
-msgstr ""
-
-#: src/classes/filters/price.py:11
-msgid "Price per hour"
-msgstr ""
-
-#: src/classes/filters/price.py:12
-msgid "Price per project"
-msgstr ""
-
-#: src/classes/filters/price.py:49
+#: src/classes/filters/price.py:43 src/classes/tasks/fl_ru.py:40
 msgid "Up to {max_price}₽"
 msgstr ""
 
-#: src/classes/filters/price.py:51
+#: src/classes/filters/price.py:45 src/classes/tasks/fl_ru.py:42
 msgid "At least {min_price}₽"
 msgstr ""
 
-#: src/classes/filters/price.py:53
+#: src/classes/filters/price.py:47 src/classes/tasks/fl_ru.py:44
+#: src/classes/tasks/kwork.py:38
 msgid "From {min_price}₽ to {max_price}₽"
 msgstr ""
 
-#: src/classes/filters/price.py:55
-msgid "Price filter ({price_type}): {price}"
+#: src/classes/filters/price.py:49
+msgid "Price filter (<i>{price_type}</i>): <b>{price}</b>"
 msgstr ""
 
-#: src/classes/filters/regex.py:24
-msgid "Regex filter: «{regex}»"
+#: src/classes/filters/regex.py:25
+msgid "Regex filter: <b>«{regex}»</b>"
 msgstr ""
 
 #: src/classes/filters/responses.py:41
@@ -107,7 +96,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: src/classes/filters/responses.py:47
-msgid "Responses filter: {responses}"
+msgid "Responses filter: <b>{responses}</b>"
 msgstr ""
 
 #: src/classes/filters/views.py:41
@@ -129,12 +118,106 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: src/classes/filters/views.py:47
-msgid "Views filter: {views}"
+msgid "Views filter: <b>{views}</b>"
 msgstr ""
 
-#: src/routers/filters_flow.py:22
+#: src/classes/tasks/base.py:17
+msgid "Undefined price"
+msgstr ""
+
+#: src/classes/tasks/base.py:18
+msgid "Price per hour"
+msgstr ""
+
+#: src/classes/tasks/base.py:19
+msgid "Price per project"
+msgstr ""
+
+#: src/classes/tasks/base.py:27
+msgid "Anonymous author"
+msgstr ""
+
+#: src/classes/tasks/base.py:56
+msgid "Price: <b>{price}₽ ({price_type})</b>"
+msgstr ""
+
+#: src/classes/tasks/base.py:70
+msgid "Views: <b>{views}</b>"
+msgstr ""
+
+#: src/classes/tasks/base.py:72
+msgid "Responses: <b>{responses}</b>"
+msgstr ""
+
+#: src/classes/tasks/fl_ru.py:46 src/classes/tasks/kwork.py:41
+msgid "Price: <b>{price} ({price_type})</b>"
+msgstr ""
+
+#: src/classes/tasks/fl_ru.py:52
+msgid "Deadline: <b>{deadline}</b>"
+msgstr ""
+
+#: src/classes/tasks/fl_ru.py:53
+msgid "Safe Deal: <b>{safe_deal}</b>"
+msgstr ""
+
+#: src/classes/tasks/fl_ru.py:53 src/classes/tasks/fl_ru.py:54
+#: src/utils/filter_creation_flow/stages.py:44
+#: src/utils/filter_creation_flow/stages.py:51
+msgid "Yes"
+msgstr ""
+
+#: src/classes/tasks/fl_ru.py:53 src/classes/tasks/fl_ru.py:54
+#: src/utils/filter_creation_flow/stages.py:46
+#: src/utils/filter_creation_flow/stages.py:51
+msgid "No"
+msgstr ""
+
+#: src/classes/tasks/fl_ru.py:54
+msgid "Self-Employed Only: <b>{se_only}</b>"
+msgstr ""
+
+#: src/classes/tasks/fl_ru.py:55
+msgid "<b>Urgent Task</b>"
+msgstr ""
+
+#: src/classes/tasks/freelance_ru.py:17
+msgid "By Agreement"
+msgstr ""
+
+#: src/classes/tasks/freelance_ru.py:18
+msgid "By Contract"
+msgstr ""
+
+#: src/classes/tasks/freelance_ru.py:19
+msgid "Via Safe Deal"
+msgstr ""
+
+#: src/classes/tasks/freelance_ru.py:52
+msgid "Deadline: <b>{deadline_days} day</b>"
+msgid_plural "Deadline: <b>{deadline_days} days</b>"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/classes/tasks/freelance_ru.py:61
+msgid "Payment Type: <b>{payment_type}</b>"
+msgstr ""
+
+#: src/classes/tasks/freelance_ru.py:63
+msgid "Author Preferences: [{preferences}]"
+msgstr ""
+
+#: src/classes/tasks/habr.py:36 src/classes/tasks/kwork.py:49
+msgid "Files Attached: <b>{files_attached}</b>"
+msgstr ""
+
+#: src/classes/tasks/kwork.py:48
+msgid "Task Expires At: <b>{expire_at}</b>"
+msgstr ""
+
+#: src/routers/filters_flow.py:24
 msgid ""
-"You have {filters_count} task filters:\n"
+"You have <b>{filters_count}</b> task filters:\n"
 "\n"
 "{filters}\n"
 "\n"
@@ -142,255 +225,256 @@ msgid ""
 "❗️- negative filter"
 msgstr ""
 
-#: src/routers/filters_flow.py:31 src/utils/markups.py:16
+#: src/routers/filters_flow.py:34 src/utils/markups.py:19
 msgid "Manage task filters"
 msgstr ""
 
-#: src/routers/filters_flow.py:37 src/routers/platforms_flow.py:53
-#: src/utils/markups.py:26 src/utils/markups.py:54
+#: src/routers/filters_flow.py:40 src/routers/platforms_flow.py:56
+#: src/utils/markups.py:29 src/utils/markups.py:57
 msgid "Back"
 msgstr ""
 
-#: src/routers/filters_flow.py:39 src/routers/platforms_flow.py:55
+#: src/routers/filters_flow.py:42 src/routers/platforms_flow.py:58
 msgid "Ok, let's go back to main menu"
 msgstr ""
 
-#: src/routers/filters_flow.py:42 src/utils/markups.py:23
+#: src/routers/filters_flow.py:45 src/utils/markups.py:26
 msgid "Add filter"
 msgstr ""
 
-#: src/routers/filters_flow.py:45
+#: src/routers/filters_flow.py:48
 msgid "Please, select new filter type"
 msgstr ""
 
-#: src/routers/filters_flow.py:50 src/routers/filters_flow.py:123
-#: src/routers/platforms_flow.py:60 src/utils/filter_creation_flow/stages.py:37
-#: src/utils/markups.py:36 src/utils/markups.py:41 src/utils/markups.py:66
+#: src/routers/filters_flow.py:53 src/routers/filters_flow.py:129
+#: src/routers/platforms_flow.py:63 src/utils/filter_creation_flow/stages.py:37
+#: src/utils/markups.py:39 src/utils/markups.py:44 src/utils/markups.py:69
 msgid "Cancel"
 msgstr ""
 
-#: src/routers/filters_flow.py:52
+#: src/routers/filters_flow.py:55
 msgid "Filter creation cancelled"
 msgstr ""
 
-#: src/routers/filters_flow.py:61 src/utils/markups.py:33
+#: src/routers/filters_flow.py:64 src/utils/markups.py:36
 msgid "🔤Keyword"
 msgstr ""
 
-#: src/routers/filters_flow.py:62 src/utils/markups.py:33
+#: src/routers/filters_flow.py:65 src/utils/markups.py:36
 msgid "*️⃣Regex"
 msgstr ""
 
-#: src/routers/filters_flow.py:63 src/utils/markups.py:34
+#: src/routers/filters_flow.py:66 src/utils/markups.py:37
 msgid "👁Views"
 msgstr ""
 
-#: src/routers/filters_flow.py:64 src/utils/markups.py:34
+#: src/routers/filters_flow.py:67 src/utils/markups.py:37
 msgid "✉️Responses"
 msgstr ""
 
-#: src/routers/filters_flow.py:65 src/utils/markups.py:35
+#: src/routers/filters_flow.py:68 src/utils/markups.py:38
 msgid "💰Price"
 msgstr ""
 
-#: src/routers/filters_flow.py:66 src/utils/markups.py:35
+#: src/routers/filters_flow.py:69 src/utils/markups.py:38
 msgid "📅Lifetime"
 msgstr ""
 
-#: src/routers/filters_flow.py:71
+#: src/routers/filters_flow.py:74
 msgid "Please, provide a valid filter type"
 msgstr ""
 
-#: src/routers/filters_flow.py:83 src/routers/start_flow.py:45
-#: src/utils/filter_creation_flow/stages.py:36 src/utils/markups.py:11
+#: src/routers/filters_flow.py:86 src/routers/start_flow.py:52
+#: src/utils/filter_creation_flow/stages.py:36 src/utils/markups.py:14
 msgid "Skip"
 msgstr ""
 
-#: src/routers/filters_flow.py:85
+#: src/routers/filters_flow.py:88
 msgid "This question can't be skipped"
 msgstr ""
 
-#: src/routers/filters_flow.py:91
+#: src/routers/filters_flow.py:94
 msgid "Please, provide a valid answer"
 msgstr ""
 
-#: src/routers/filters_flow.py:106
+#: src/routers/filters_flow.py:109
 msgid "Invalid filter data, please try again."
 msgstr ""
 
-#: src/routers/filters_flow.py:111
+#: src/routers/filters_flow.py:115
 msgid ""
 "New filter successfully created:\n"
 "{filter}"
 msgstr ""
 
-#: src/routers/filters_flow.py:115 src/utils/markups.py:25
+#: src/routers/filters_flow.py:121 src/utils/markups.py:28
 msgid "Remove filter"
 msgstr ""
 
-#: src/routers/filters_flow.py:118
+#: src/routers/filters_flow.py:124
 msgid "Please, enter the filter ID (shown in brackets before the filter type)"
 msgstr ""
 
-#: src/routers/filters_flow.py:125
+#: src/routers/filters_flow.py:131
 msgid "Filter removal cancelled"
 msgstr ""
 
-#: src/routers/filters_flow.py:136
+#: src/routers/filters_flow.py:142
 msgid "Please, provide a valid filter ID"
 msgstr ""
 
-#: src/routers/filters_flow.py:145
+#: src/routers/filters_flow.py:151
 msgid "Filter with prodived ID was not found, try again."
 msgstr ""
 
-#: src/routers/filters_flow.py:150
+#: src/routers/filters_flow.py:157
 msgid ""
 "Filter was successfully deleted:\n"
 "{filter}"
 msgstr ""
 
-#: src/routers/platforms_flow.py:27
+#: src/routers/platforms_flow.py:26
 msgid ""
-"You are subscribed to {enabled_platform_count} platform out of "
-"{platform_count} available:\n"
+"You are subscribed to <b>{enabled_platform_count}</b> platform out of "
+"<b>{platform_count}</b> available:\n"
 "\n"
 "{platforms}"
 msgid_plural ""
-"You are subscribed to {enabled_platform_count} platforms out of "
-"{platform_count} available:\n"
+"You are subscribed to <b>{enabled_platform_count}</b> platforms out of "
+"<b>{platform_count}</b> available:\n"
 "\n"
 "{platforms}"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/routers/platforms_flow.py:42 src/utils/markups.py:17
+#: src/routers/platforms_flow.py:45 src/utils/markups.py:20
 msgid "Manage platforms"
 msgstr ""
 
-#: src/routers/platforms_flow.py:72 src/utils/markups.py:53
+#: src/routers/platforms_flow.py:75 src/utils/markups.py:56
 msgid "Unsubscribe from the platform"
 msgstr ""
 
-#: src/routers/platforms_flow.py:81 src/routers/platforms_flow.py:124
+#: src/routers/platforms_flow.py:84 src/routers/platforms_flow.py:127
 msgid "Please, select a platform name"
 msgstr ""
 
-#: src/routers/platforms_flow.py:96 src/routers/platforms_flow.py:138
+#: src/routers/platforms_flow.py:99 src/routers/platforms_flow.py:141
 msgid "Platform was not found, try again."
 msgstr ""
 
-#: src/routers/platforms_flow.py:102
+#: src/routers/platforms_flow.py:105
 msgid "You're not subscribed to this platform"
 msgstr ""
 
-#: src/routers/platforms_flow.py:109
+#: src/routers/platforms_flow.py:112
 msgid "You have unsubscribed from the platform \"{platform}\""
 msgstr ""
 
-#: src/routers/platforms_flow.py:116 src/utils/markups.py:51
+#: src/routers/platforms_flow.py:119 src/utils/markups.py:54
 msgid "Subscribe to the platform"
 msgstr ""
 
-#: src/routers/platforms_flow.py:146
+#: src/routers/platforms_flow.py:149
 msgid "You're already subscribed to this platform"
 msgstr ""
 
-#: src/routers/platforms_flow.py:151
+#: src/routers/platforms_flow.py:154
 msgid "You have subscribed to the platform \"{platform}\""
 msgstr ""
 
-#: src/routers/start_flow.py:24
+#: src/routers/start_flow.py:25
 msgid ""
-"Hello, i'm FLOculus-Bot!\n"
+"Hello, i'm <b>FLOculus-Bot</b>!\n"
 "I can help you find freelance tasks on various freelance platforms."
 msgstr ""
 
-#: src/routers/start_flow.py:25
+#: src/routers/start_flow.py:28
 msgid ""
 "Please, provide your geolocation so i can display the time in your "
 "timezone."
 msgstr ""
 
-#: src/routers/start_flow.py:28
+#: src/routers/start_flow.py:31
 msgid "Hello again!"
 msgstr ""
 
-#: src/routers/start_flow.py:41
+#: src/routers/start_flow.py:45
 msgid "Thanks, time will be displayed in your timezone ({timezone})"
 msgstr ""
 
-#: src/routers/start_flow.py:49
-msgid "Ok, time will be displayed in UTC timezone."
+#: src/routers/start_flow.py:56
+msgid "Ok, time will be displayed in <b>UTC</b> timezone."
 msgstr ""
 
-#: src/utils/markups.py:10
+#: src/utils/markups.py:13
 msgid "Provide geolocation"
 msgstr ""
 
-#: src/utils/filter_creation_flow/flows.py:50
+#: src/utils/markups.py:76
+msgid "Open Task"
+msgstr ""
+
+#: src/utils/filter_creation_flow/flows.py:53
 msgid "Please, enter filter keyword"
 msgstr ""
 
-#: src/utils/filter_creation_flow/flows.py:51
+#: src/utils/filter_creation_flow/flows.py:54
 msgid "Make filter case-sensitive (Yes/No)?"
 msgstr ""
 
-#: src/utils/filter_creation_flow/flows.py:52
-#: src/utils/filter_creation_flow/flows.py:59
-#: src/utils/filter_creation_flow/flows.py:67
-#: src/utils/filter_creation_flow/flows.py:84
-#: src/utils/filter_creation_flow/flows.py:108
-#: src/utils/filter_creation_flow/flows.py:125
+#: src/utils/filter_creation_flow/flows.py:55
+#: src/utils/filter_creation_flow/flows.py:62
+#: src/utils/filter_creation_flow/flows.py:70
+#: src/utils/filter_creation_flow/flows.py:87
+#: src/utils/filter_creation_flow/flows.py:111
+#: src/utils/filter_creation_flow/flows.py:128
 msgid "Make filter negative (Yes/No)?"
 msgstr ""
 
-#: src/utils/filter_creation_flow/flows.py:58
+#: src/utils/filter_creation_flow/flows.py:61
 msgid "Please, enter filter regex"
 msgstr ""
 
-#: src/utils/filter_creation_flow/flows.py:65
+#: src/utils/filter_creation_flow/flows.py:68
 msgid "Please, enter min views amount"
 msgstr ""
 
-#: src/utils/filter_creation_flow/flows.py:66
+#: src/utils/filter_creation_flow/flows.py:69
 msgid "Please, enter max views amount"
 msgstr ""
 
-#: src/utils/filter_creation_flow/flows.py:82
+#: src/utils/filter_creation_flow/flows.py:85
 msgid "Please, enter min responses amount"
 msgstr ""
 
-#: src/utils/filter_creation_flow/flows.py:83
+#: src/utils/filter_creation_flow/flows.py:86
 msgid "Please, enter max responses amount"
 msgstr ""
 
-#: src/utils/filter_creation_flow/flows.py:99
+#: src/utils/filter_creation_flow/flows.py:102
 msgid "Please, enter filter price type"
 msgstr ""
 
-#: src/utils/filter_creation_flow/flows.py:106
+#: src/utils/filter_creation_flow/flows.py:109
 msgid "Please, enter min price ₽"
 msgstr ""
 
-#: src/utils/filter_creation_flow/flows.py:107
+#: src/utils/filter_creation_flow/flows.py:110
 msgid "Please, enter max price ₽"
 msgstr ""
 
-#: src/utils/filter_creation_flow/flows.py:123
+#: src/utils/filter_creation_flow/flows.py:126
 msgid "Please, enter min lifetime in seconds"
 msgstr ""
 
-#: src/utils/filter_creation_flow/flows.py:124
+#: src/utils/filter_creation_flow/flows.py:127
 msgid "Please, enter max lifetime in seconds"
 msgstr ""
 
-#: src/utils/filter_creation_flow/stages.py:44
-#: src/utils/filter_creation_flow/stages.py:51
-msgid "Yes"
-msgstr ""
-
-#: src/utils/filter_creation_flow/stages.py:46
-#: src/utils/filter_creation_flow/stages.py:51
-msgid "No"
+#: src/utils/parsing/background_task.py:116
+msgid ""
+"Hey Boss, i have a new task for you:\n"
+"\n"
+"{task}"
 msgstr ""

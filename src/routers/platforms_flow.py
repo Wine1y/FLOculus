@@ -1,4 +1,5 @@
 from typing import List
+from html import escape
 
 from aiogram import Router, types, F
 from aiogram.filters import Command, StateFilter
@@ -23,20 +24,21 @@ async def _answer_platforms_list(
     enabled_platforms_count = len(platforms)-len(disabled_platforms)
     await message.answer(
         _(
-            "You are subscribed to {enabled_platform_count} platform out of {platform_count} available:\n\n{platforms}",
-            "You are subscribed to {enabled_platform_count} platforms out of {platform_count} available:\n\n{platforms}",
+            "You are subscribed to <b>{enabled_platform_count}</b> platform out of <b>{platform_count}</b> available:\n\n{platforms}",
+            "You are subscribed to <b>{enabled_platform_count}</b> platforms out of <b>{platform_count}</b> available:\n\n{platforms}",
             enabled_platforms_count
         ).format(
             enabled_platform_count=enabled_platforms_count, platform_count=len(platforms),
             platforms='\n'.join([
-                f"{'🔕' if platform.id in disabled_platform_ids else '🔔'} {platform.name}"
+                f"{'🔕' if platform.id in disabled_platform_ids else '🔔'} {escape(platform.name)}"
                 for platform in platforms
             ])
         ),
         reply_markup=get_platforms_menu_markup(
             add_subscribe_button=len(disabled_platform_ids) > 0,
             add_unsubscribe_button=len(disabled_platform_ids) < len(platforms)
-        )
+        ),
+        parse_mode="HTML"
     )
 
 @router.message(Command("platforms"))

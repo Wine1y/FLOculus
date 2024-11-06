@@ -32,6 +32,7 @@ POSTED_AT_RE = re.compile(r"(?P<day>\d\d) (?P<month>\w+) (?P<year>\d\d\d\d), (?P
 
 
 class HabrParser(BS4PlatformParser):
+    name: str = "freelance.habr.com"
     base_url: str = "https://freelance.habr.com"
 
     async def _parse_tasks(self) -> AsyncGenerator[HabrTask, None]:
@@ -74,6 +75,7 @@ class HabrParser(BS4PlatformParser):
         return HabrTask(
             id=path.split("/")[-1],
             title=self._get_tag_text(soup.select_one("h2.task__title")).replace("\n", " "),
+            url=f"{self.base_url}{path}",
             description=self._get_tag_text(soup.select_one("div.task__description")),
             views=int(self._get_tag_text(soup.select_one("div.task__meta span.count:nth-child(2)"))),
             responses=int(self._get_tag_text(soup.select_one("div.task__meta span.count:nth-child(1)"))),

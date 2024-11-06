@@ -44,4 +44,4 @@ class ResponsesTaskFilter(TaskFilter):
             case (min_responses, max_responses):
                 responses = _("From {min_responses} to {max_responses} response", "From {min_responses} to {max_responses} responses", max_responses).format(min_responses=min_responses, max_responses=max_responses)
         
-        return _("Responses filter: {responses}").format(responses=responses)
+        return _("Responses filter: <b>{responses}</b>").format(responses=responses)

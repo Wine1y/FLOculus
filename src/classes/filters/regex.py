@@ -1,4 +1,5 @@
 from re import Pattern, compile
+from html import escape
 
 from aiogram.utils.i18n import gettext as _
 
@@ -21,4 +22,4 @@ class RegexTaskFilter(TaskFilter):
         ))
 
     def _translated_str(self) -> str:
-        return _("Regex filter: «{regex}»").format(regex=self.regexp.pattern)
+        return _("Regex filter: <b>«{regex}»</b>").format(regex=escape(self.regexp.pattern))

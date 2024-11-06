@@ -3,14 +3,8 @@ from typing import Optional
 from aiogram.utils.i18n import gettext as _, lazy_gettext as __
 
 from .base import TaskFilter
-from ..tasks import Task, PriceType
+from ..tasks import Task, PriceType, PRICE_TYPE_TO_TRANSLATION
 
-
-PRICE_TYPE_TO_TRANSLATION = {
-    PriceType.UNDEFINED: __("Undefined price"),
-    PriceType.PER_HOUR: __("Price per hour"),
-    PriceType.PER_PROJECT: __("Price per project")
-}
 
 class PriceTaskFilter(TaskFilter):
     price_type: PriceType
@@ -52,7 +46,7 @@ class PriceTaskFilter(TaskFilter):
             case (min_price, max_price):
                 price = _("From {min_price}₽ to {max_price}₽").format(min_price=min_price, max_price=max_price)
         
-        return _("Price filter ({price_type}): {price}").format(
+        return _("Price filter (<i>{price_type}</i>): <b>{price}</b>").format(
             price_type=PRICE_TYPE_TO_TRANSLATION[self.price_type],
             price=price
         )

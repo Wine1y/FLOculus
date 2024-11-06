@@ -48,7 +48,7 @@ class LifetimeTaskFilter(TaskFilter):
                     raise ValueError(f"{self.__class__.__name__} min_lifetime can't be greater than max_lifetime")
                 lifetime = _("From {min_lifetime} to {max_lifetime}").format(min_lifetime=_lifetime_to_translated_str(min_lifetime), max_lifetime=_lifetime_to_translated_str(max_lifetime))
         
-        return _("Lifetime filter: {lifetime}").format(lifetime=lifetime)
+        return _("Lifetime filter: <b>{lifetime}</b>").format(lifetime=lifetime)
 
 def _lifetime_to_translated_str(lifetime: timedelta) -> str:
     days, remaining = int(lifetime.total_seconds()//86400), lifetime.total_seconds()%86400

@@ -1,3 +1,5 @@
+from html import escape
+
 from aiogram.utils.i18n import gettext as _
 
 from .base import TaskFilter
@@ -32,5 +34,5 @@ class KeywordTaskFilter(TaskFilter):
             ))
     
     def _translated_str(self) -> str:
-        string = _("Keyword filter: «{keyword}»").format(keyword=self.keyword)
+        string = _("Keyword filter: <b>«{keyword}»</b>").format(keyword=escape(self.keyword))
         return f"{'🔠' if self.case_sensitive else ''}{string}"

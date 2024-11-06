@@ -13,6 +13,7 @@ ID_RE = re.compile(r".+-(?P<id>\d+).html")
 
 
 class FreelanceRuParser(BS4PlatformParser):
+    name: str = "freelance.ru"
     base_url: str = "https://freelance.ru"
 
     async def _parse_tasks(self) -> AsyncGenerator[FreelanceRuTask, None]:
@@ -81,6 +82,7 @@ class FreelanceRuParser(BS4PlatformParser):
         return FreelanceRuTask(
             id=ID_RE.search(path).group("id"),
             title=self._get_tag_text(soup.select_one(".proj_tophead")),
+            url=f"{self.base_url}{path}",
             description=self._get_tag_text(soup.select_one("table#proj_table tr:nth-child(2)")),
             views=views,
             responses=responses,

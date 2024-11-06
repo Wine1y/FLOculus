@@ -44,4 +44,4 @@ class ViewsTaskFilter(TaskFilter):
             case (min_views, max_views):
                 views = _("From {min_views} to {max_views} view", "From {min_views} to {max_views} views", max_views).format(min_views=min_views, max_views=max_views)
         
-        return _("Views filter: {views}").format(views=views)
+        return _("Views filter: <b>{views}</b>").format(views=views)
