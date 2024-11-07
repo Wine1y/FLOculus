@@ -35,7 +35,7 @@ class HabrParser(BS4PlatformParser):
     name: str = "freelance.habr.com"
     base_url: str = "https://freelance.habr.com"
 
-    async def _parse_tasks(self) -> AsyncGenerator[HabrTask, None]:
+    async def parse_tasks(self) -> AsyncGenerator[HabrTask, None]:
         page, last_page = 1, 100
         while page <= last_page:
             soup = await self._get_page_soup(f"/tasks?page={page}")

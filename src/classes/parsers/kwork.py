@@ -16,7 +16,7 @@ class KworkParser(BS4PlatformParser):
     name: str = "kwork.ru"
     base_url: str = "https://kwork.ru"
 
-    async def _parse_tasks(self) -> AsyncGenerator[KworkTask, None]:
+    async def parse_tasks(self) -> AsyncGenerator[KworkTask, None]:
         page = 1
         while True:
             soup = await self._get_page_soup(f"/projects?page={page}")

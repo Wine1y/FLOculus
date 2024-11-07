@@ -20,7 +20,7 @@ PARSING_INTERVAL_SECONDS = int(os.getenv("PARSING_INTERVAL_SECONDS", "90"))
 PARSING_PLATFORM_INTERVAL_SECONDS = 15
 SENDING_USERS_DELAY_SECONDS = 0.25
 SENDING_TASKS_DELAY_SECONDS = 1
-PARSING_TASKS_LIMIT = 25
+PARSING_TASKS_LIMIT = int(os.getenv("PARSING_TASKS_LIMIT", "15"))
 
 log = logging.getLogger(__name__)
 
@@ -38,14 +38,19 @@ async def parse_new_tasks(platform_name: str, bot: Bot, i18n: I18n):
         subscribed_users = await user_rep.get_all(limit=None, filter_func=lambda sel: sel.filter(~User.disabled_platforms.contains(platform)))
         user_language_codes = dict()
 
-        tasks_parsed = 0
-        new_last_mark = platform.last_time_mark or 0
-        async for task in parser.parse_new_tasks(platform.last_time_mark or 0):
-            tasks_parsed+=1
-            log.debug(f"[{platform_name}] task parsed ({tasks_parsed}/{PARSING_TASKS_LIMIT}): {task}")
-            new_last_mark = max(new_last_mark, task.posted_at_time_mark)
-            if tasks_parsed >= PARSING_TASKS_LIMIT:
+        new_last_time_mark = last_time_mark = platform.last_time_mark or 0
+        tasks_gen = parser.parse_tasks()
+        for i in range(PARSING_TASKS_LIMIT):
+            try:
+                task = await anext(tasks_gen)
+            except StopAsyncIteration:
                 break
+
+            log.debug(f"[{platform_name}] task parsed ({i+1}/{PARSING_TASKS_LIMIT}): {task}")
+            if (task_time_mark := task.posted_at_time_mark) <= last_time_mark:
+                continue
+            new_last_time_mark = max(new_last_time_mark, task_time_mark)
+
             for user in subscribed_users:
                 log.debug(f"[{platform_name}] Checking task by user {user} filters")
                 try:
@@ -80,8 +85,8 @@ async def parse_new_tasks(platform_name: str, bot: Bot, i18n: I18n):
                         await asyncio.sleep(SENDING_USERS_DELAY_SECONDS)
             await asyncio.sleep(SENDING_TASKS_DELAY_SECONDS)
         
-        log.debug(f"[{platform_name}] last_time_mark updated: {platform.last_time_mark} -> {new_last_mark}")
-        platform.last_time_mark = new_last_mark
+        log.debug(f"[{platform_name}] last_time_mark updated: {last_time_mark} -> {new_last_time_mark}")
+        platform.last_time_mark = new_last_time_mark
         await platform_rep.commit()
     log.debug(f"Parsing {platform_name} finished")
 

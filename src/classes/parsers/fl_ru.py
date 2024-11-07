@@ -24,7 +24,7 @@ class FlRuParser(BS4PlatformParser):
     name: str = "fl.ru"
     base_url: str = "https://www.fl.ru"
 
-    async def _parse_tasks(self) -> AsyncGenerator[FlRuTask, None]:
+    async def parse_tasks(self) -> AsyncGenerator[FlRuTask, None]:
         page = 1
         path = "/projects/"
         while True:

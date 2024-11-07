@@ -16,7 +16,7 @@ class FreelanceRuParser(BS4PlatformParser):
     name: str = "freelance.ru"
     base_url: str = "https://freelance.ru"
 
-    async def _parse_tasks(self) -> AsyncGenerator[FreelanceRuTask, None]:
+    async def parse_tasks(self) -> AsyncGenerator[FreelanceRuTask, None]:
         page = 1
         while True:
             soup = await self._get_page_soup(f"/project/search?q=&a=0&a=1&v=0&c=&page={page}")
