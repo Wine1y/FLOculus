@@ -11,12 +11,11 @@ from .base import Task, TaskAuthor
 class HabrTaskAuthor(TaskAuthor):
     completed_tasks: int
     active_tasks: int
-    tasks_in_arbitration: int
     positive_reviews: int
     negative_reviews: int
 
     def translated_str(self, tz: tzinfo) -> str:
-        return f"{super().translated_str(tz)}[+{self.positive_reviews} | -{self.negative_reviews} | ✅{self.completed_tasks} ⚠️{self.active_tasks} ❗️{self.tasks_in_arbitration}]"
+        return f"{super().translated_str(tz)}[+{self.positive_reviews} | -{self.negative_reviews} | ✅{self.completed_tasks} ⚠️{self.active_tasks}]"
 
 @dataclass
 class TaskAttachment():

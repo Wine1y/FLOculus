@@ -50,18 +50,17 @@ class HabrParser(BS4PlatformParser):
     async def _parse_task(self, path: str) -> HabrTask:
         soup = await self._get_page_soup(path)
 
-        user_stats = soup.select_one("div.user_statistics")
+        user_stats = {
+            self._get_tag_text(row.select_one(".label")).lower(): self._get_tag_text(row.select_one(".value"), separator=' ')
+            for row in soup.select("div.user_statistics div.row:not(.divider)")
+        }
+        user_reviews = user_stats["отзывы исполнителей"].replace(' ', '').split('/')
         author = HabrTaskAuthor(
             name=self._get_tag_text(soup.select_one("div.user_about div.fullname")),
-            completed_tasks=int(self._get_tag_text(user_stats.select_one("div.row:nth-child(3) .value"))),
-            active_tasks=int(self._get_tag_text(user_stats.select_one("div.row:nth-child(4) .value"))),
-            tasks_in_arbitration=int(self._get_tag_text(user_stats.select_one("div.row:nth-child(5) .value"))),
-            positive_reviews=abs(int(
-                self._get_tag_text(user_stats.select_one("div.row:nth-child(6) .value a:nth-child(1)"))
-            )),
-            negative_reviews=abs(int(
-                self._get_tag_text(user_stats.select_one("div.row:nth-child(6) .value a:nth-child(2)"))
-            )),
+            completed_tasks=int(user_stats["завершенные заказы"]),
+            active_tasks=int(user_stats["в поиске исполнителя"]),
+            positive_reviews=abs(int(user_reviews[0])),
+            negative_reviews=abs(int(user_reviews[1])),
         )
 
         dt_match = POSTED_AT_RE.match(self._get_tag_text(list(soup.select_one("div.task__meta").strings)[0]))
