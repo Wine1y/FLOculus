@@ -45,6 +45,9 @@ async def parse_new_tasks(platform_name: str, bot: Bot, i18n: I18n):
                 task = await anext(tasks_gen)
             except StopAsyncIteration:
                 break
+            except Exception:
+                log.exception(f"[{platform_name}] Error while parsing next task")
+                break
 
             log.debug(f"[{platform_name}] task parsed ({i+1}/{PARSING_TASKS_LIMIT}): {task}")
             if (task_time_mark := task.posted_at_time_mark) <= last_time_mark:

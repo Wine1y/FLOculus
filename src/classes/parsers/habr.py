@@ -30,6 +30,8 @@ PRICE_TYPES = {
 }
 POSTED_AT_RE = re.compile(r"(?P<day>\d\d) (?P<month>\w+) (?P<year>\d\d\d\d), (?P<hour>\d\d):(?P<minute>\d\d)")
 
+class TaskNotFound(Exception):
+    ...
 
 class HabrParser(BS4PlatformParser):
     name: str = "freelance.habr.com"
@@ -43,12 +45,19 @@ class HabrParser(BS4PlatformParser):
             await asyncio.sleep(self.request_delay_seconds)
 
             for a in soup.select("ul#tasks_list li article div.task__title a"):
-                yield (await self._parse_task(a.attrs.get("href")))
-                await asyncio.sleep(self.request_delay_seconds)
+                try:
+                    yield (await self._parse_task(a.attrs.get("href")))
+                except TaskNotFound:
+                    continue
+                finally:
+                    await asyncio.sleep(self.request_delay_seconds)
             page +=1
     
     async def _parse_task(self, path: str) -> HabrTask:
         soup = await self._get_page_soup(path)
+
+        if soup.select_one("h2.task__title") is None:
+            raise TaskNotFound()
 
         user_stats = {
             self._get_tag_text(row.select_one(".label")).lower(): self._get_tag_text(row.select_one(".value"), separator=' ')

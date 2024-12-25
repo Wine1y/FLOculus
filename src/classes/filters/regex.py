@@ -1,4 +1,4 @@
-from re import Pattern, compile
+import re
 from html import escape
 
 from aiogram.utils.i18n import gettext as _
@@ -8,11 +8,11 @@ from ..tasks import Task
 
 
 class RegexTaskFilter(TaskFilter):
-    regexp: Pattern[str]
+    regexp: re.Pattern[str]
 
-    def __init__(self, regexp: Pattern | str, is_negative: bool=False):
+    def __init__(self, regexp: re.Pattern | str, is_negative: bool=False):
         super().__init__(is_negative)
-        self.regexp = compile(regexp) if isinstance(regexp, str) else regexp
+        self.regexp = re.compile(regexp, re.IGNORECASE) if isinstance(regexp, str) else regexp
 
     def _filter(self, task: Task) -> bool:
         return any((
